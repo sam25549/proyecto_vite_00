@@ -1,43 +1,31 @@
-var mouse = {
-  x: window.innerWidth / 2,
-  y: window.innerHeight / 2,
+import Circles from "./js/circles.js";
+
+let circles;
+window.setup = (event) => {
+    circles = new Circles({
+        palette: ['#886176', '#9A7197', '#9D96B8', '#AFD2E9'],
+        total_points: 10
+    });
+    createCanvas(windowWidth, windowHeight);
 };
 
-var trase = {
-  x: window.innerWidth / 2,
-  y: window.innerHeight / 2,
+window.draw = (event) => {
+    circles.draw()
 };
 
-var friction02 = 0.06;
-
-var friction = 0.1;
-
-
-
-window.setup = () => {
-  // Create a canvas that fills the window
-  // and set the background color to black
-  createCanvas(windowWidth, windowHeight);
-  background('black');
+window.windowResized = (event) => {
+    resizeCanvas(windowWidth, windowHeight);
 };
 
-// p5.js draw function
-window.draw = () => {
-  background('black');
-  mouse.x += (mouseX - mouse.x) * friction;
-  mouse.y += (mouseY - mouse.y) * friction;
+// eventos de mouse
 
-  trase.x += (mouseX - trase.x) * friction02;
-  trase.y += (mouseY - trase.y) * friction02;
-  ellipse(trase.x, trase.y, 10, 10);
-  fill(255, 0, 0);
-  ellipse(mouse.x, mouse.y, 10, 10);
-  text(mouseX + ", " + mouseY, mouse.x, mouse.y);
-  fill(255);
+window.mousePressed = (e) => {
+    // console.log(e);
+};
+window.mouseMoved = (e) => {
+    // console.log(e);
 };
 
-// p5.js windowResized function
-window.windowResized = () => {
-resizeCanvas(windowWidth, windowHeight);
-background('black'); // Reset background after resizing
+window.mouseReleased = (e) => {
+    // console.log(e);
 };
