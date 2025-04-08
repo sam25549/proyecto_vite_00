@@ -8,6 +8,15 @@ let _line;
 const redoBtn = document.getElementById('redo-btn');
 const undoBtn = document.getElementById('erase-btn');
 
+redoBtn.addEventListener('click', (e) => {
+    if (lines.length > 0) {
+        lines.pop();
+    }
+});
+undoBtn.addEventListener('click', (e) => {
+    lines = [];
+});
+
 window.setup = (event) => {
     createCanvas(windowWidth, windowHeight);
 }
@@ -36,4 +45,10 @@ window.draw = (event) => {
 
 window.Resized = (event => {
     resizeCanvas(windowWidth, windowHeight);
+})
+
+
+window.addEventListener('load', (event) => {
+    const preloader = new Preloader();
+    preloader.hide();
 })
