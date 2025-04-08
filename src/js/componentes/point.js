@@ -8,6 +8,8 @@ export default class Point {
         this.friction = args.friction || 0.1;
     }
 
+
+
     draw() {
         this.update();
         this.fill.setAlpha(this.alpha)
